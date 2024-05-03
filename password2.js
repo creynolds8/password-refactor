@@ -1,24 +1,16 @@
 const obfuscate = function(input) {
   let obfuscated = '';
-  for (let i = 0; i < input.length; i++) {
-    if (input[i] === 'a') {
-      obfuscated += '4';
-    } else if (input[i] === 'e') {
-      obfuscated += '3';
-    } else if (input[i] === 'o') {
-      obfuscated += '0';
-    } else if (input[i] === 'l') {
-      obfuscated += '1';
-    } else {
-      obfuscated += input[i];
+  for (const char of input) {
+    switch (char) {
+    case 'a': obfuscated += '4'; break;
+    case 'e': obfuscated += '3'; break;
+    case 'o': obfuscated += '0'; break;
+    case 'l': obfuscated += '1'; break;
+    default: obfuscated += char;
     }
   }
   return obfuscated;
 };
 
-console.log(obfuscate('password'));
-
 const input = process.argv[2];
-if (input) {
-  console.log(obfuscate(input));
-};
+console.log(input ? obfuscate(input) : 'Please enter a valid password');
